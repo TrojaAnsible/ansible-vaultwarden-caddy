@@ -1,0 +1,20 @@
+---
+#
+- hosts: all
+  become: yes
+
+  vars:
+    configure_vaultwarden: true
+
+
+  vars_files:
+    - group_vars/password_vault.yml
+
+
+  roles:
+    - name: ansible-vaultwarden-caddy
+
+#  tasks:
+#    - include_role:
+#        name: ansible-vaultwarden-caddy
+#
