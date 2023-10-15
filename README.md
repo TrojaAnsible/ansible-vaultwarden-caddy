@@ -21,7 +21,6 @@ Role Variables
 |vault_smtp_login|smtp auth login|no default|yes|
 |vault_smtp_password|smtp auth password|no default|yes|
 |vault_mail_from_vaultwarden|from address|no default|yes|
-
 |vwbk_BACKUP_FILE_SUFFIX|date format| '%Y%m%d'|no|
 |vwbk_BACKUP_KEEP_DAYS|number of days to keep| 10|no|
 |vwbk_CRON|cron config| '0 1 * * *'|no|
