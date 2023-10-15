@@ -1,0 +1,78 @@
+---
+version: '3'
+
+# https://linuxiac.com/how-to-install-vaultwarden-password-manager-with-docker/
+services:
+  vaultwarden:
+    image: ${vaultwarden_image}
+    container_name: vaultwarden
+    restart: always
+    labels:
+      caddy: ${CADDY_DOMAIN}:443
+      caddy.tls.dns: duckdns ${DUCKDNS_TOKEN}
+      caddy.reverse_proxy: "vaultwarden:8001"
+    environment:
+      ROCKET_PORT: 8001
+      WEBSOCKET_ENABLED: true
+      SIGNUPS_ALLOWED: true
+      INVITATIONS_ALLOWED: false
+      ADMIN_TOKEN: ${ADMIN_TOKEN}
+      DUCKDNS_TOKEN: ${DUCKDNS_TOKEN}
+      DOMAIN: https://${CADDY_DOMAIN}
+      SMTP_HOST: ${SMTP_HOST}
+      SMTP_FROM: ${SMTP_FROM}
+      SMTP_PORT: ${SMTP_PORT}
+      SMTP_SECURITY: ${SMTP_SECURITY}
+      SMTP_USERNAME: ${SMTP_USERNAME}
+      SMTP_PASSWORD: ${SMTP_PASSWORD}
+    volumes:
+      - /opt/docker/vaultwarden/data:/data
+    networks:
+      - vwnet
+    depends_on:
+      - caddy
+
+  # https://github.com/lucaslorentz/caddy-docker-proxy#custom-images
+  caddy:
+    image: ${caddy_image}
+    container_name: reverse-proxy
+    ports:
+      - 80:80
+      - 443:443
+    environment:
+      - CADDY_INGRESS_NETWORKS=vwnet
+    networks:
+      - vwnet
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /opt/docker/vaultwarden/caddy-data:/data
+    restart: always
+
+  backup:
+    image: ${vaultwarden_backup_image}
+    container_name: vaultwarden-backup
+    restart: always
+    environment:
+      TIMEZONE: ${TZ}
+      RCLONE_REMOTE_NAME: 'BitwardenBackup'
+      RCLONE_GLOBAL_FLAG: '-v'
+      CRON: "${CRON}"
+      ZIP_PASSWORD: "${ZIP_PASSWORD}"
+      BACKUP_FILE_SUFFIX: "${BACKUP_FILE_SUFFIX}"
+      BACKUP_KEEP_DAYS: ${BACKUP_KEEP_DAYS}
+    volumes:
+      - /opt/docker/vaultwarden/data:/bitwarden/data/
+      - /opt/docker/vaultwarden/vwbackup:/config/
+      - /opt/docker/vaultwarden/backup_data:/BitwardenBackup
+
+volumes:
+  vaultwarden-data:
+    name: vaultwarden-data
+  vaultwarden-rclone-data:
+    name: vaultwarden-rclone-data
+  caddy_data: {}
+
+networks:
+  vwnet:
+    name: vwnet
+#

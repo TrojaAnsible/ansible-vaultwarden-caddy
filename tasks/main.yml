@@ -1,0 +1,48 @@
+---
+# tasks file for ansible-vaultwarden-caddy
+#
+
+- assert:
+    that:
+      - vault_vw_admin_token != None
+    fail_msg: vault_vw_admin_token variable not set
+
+- assert:
+    that:
+      - vault_vw_duckdns_token != None
+    fail_msg: vault_vw_duckdns_token variable not set
+
+- assert:
+    that:
+      - vault_ZIP_PASSWORD != None
+    fail_msg: vault_ZIP_PASSWORD variable not set
+
+- assert:
+    that:
+      - vault_smtp_server != None
+    fail_msg: vault_smtp_server variable not set
+
+- assert:
+    that:
+      - vault_smtp_login != None
+    fail_msg: vault_smtp_login variable not set
+
+- assert:
+    that:
+      - vault_smtp_password != None
+    fail_msg: vault_smtp_password variable not set
+
+- assert:
+    that:
+      - vault_mail_from_vaultwarden != None
+    fail_msg: vault_mail_from_vaultwarden variable not set
+
+- assert:
+    that:
+      - vw_caddy_domain != None
+    fail_msg: vw_caddy_domain variable not set
+
+
+- import_tasks: vaultwarden.yml
+
+#

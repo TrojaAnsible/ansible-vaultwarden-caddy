@@ -1,0 +1,55 @@
+---
+# defaults file for ansible-vaultwarden-caddy
+
+# OS config
+timezone: Europe/Vienna
+
+
+# pihole application user
+app_user: 'pihole'
+
+smtp_port: 587
+
+# vaultwarden secret must not be empty
+vault_smtp_server:
+vault_smtp_login:
+vault_smtp_password:
+vault_mail_from_vaultwarden:
+vault_vw_admin_token:
+vault_vw_duckdns_token:
+vault_ZIP_PASSWORD:
+vault_vw_caddy_domain4:
+
+
+vw_data_folder: data
+vw_rocket_address: 0.0.0.0
+vw_rocket_port: 8001
+
+
+# docker home
+docker_home: /opt/docker
+
+
+# vaultwarden
+docker_dirs3:
+  - vaultwarden/data
+  - vaultwarden/caddy-data
+  - vaultwarden/backup_data
+  - vaultwarden/vwbackup/rclone
+
+
+# vaultwarden
+vw_image: vaultwarden/server:1.29.2
+caddy_image: juharov/caddy-duckdns-cloudflare:latest
+vw_backup_image: ttionya/vaultwarden-backup:latest
+
+
+# env files
+vaultwarden_env: vaultwarden.env
+
+
+# vaultwarden backup
+vwbk_CRON: '0 1 * * *'
+vwbk_BACKUP_FILE_SUFFIX: '%Y%m%d'
+vwbk_BACKUP_KEEP_DAYS: 10
+#
