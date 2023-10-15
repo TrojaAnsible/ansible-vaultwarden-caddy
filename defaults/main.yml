@@ -31,7 +31,7 @@ docker_home: /opt/docker
 
 
 # vaultwarden
-docker_dirs3:
+docker_dirs:
   - vaultwarden/data
   - vaultwarden/caddy-data
   - vaultwarden/backup_data

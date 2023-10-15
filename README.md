@@ -13,7 +13,7 @@ Role Variables
 |-------------------|-------------|-------------|---------|
 |app_user|user for the install directory| pihole|no|
 |docker_home|base install directory| /opt/docker|no|
-|docker_dirs3|list of installation sub-directory||no|
+|docker_dirs|list of installation sub-directory||no|
 |vaultwarden_env| template name| vaultwarden.env|no|
 |timezone|Timezone| Europe/Vienna|no|
 |smtp_port|smtp server port| 587|no|
@@ -21,6 +21,7 @@ Role Variables
 |vault_smtp_login|smtp auth login|no default|yes|
 |vault_smtp_password|smtp auth password|no default|yes|
 |vault_mail_from_vaultwarden|from address|no default|yes|
+
 |vwbk_BACKUP_FILE_SUFFIX|date format| '%Y%m%d'|no|
 |vwbk_BACKUP_KEEP_DAYS|number of days to keep| 10|no|
 |vwbk_CRON|cron config| '0 1 * * *'|no|

@@ -6,7 +6,7 @@
     owner: "{{ app_user }}"
     group: docker
     mode: 0755
-  with_items: "{{ docker_dirs3 }}"
+  with_items: "{{ docker_dirs }}"
 
 
 - name: lookup files with filetree
