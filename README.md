@@ -30,8 +30,8 @@ Role Variables
 |vw_rocket_port|| 8001|no|
 |vault_vw_admin_token||no default|yes|
 |vw_backup_image|vault warden backup image| ttionya/vaultwarden-backup|no|
-|vault_ZIP_PASSWORD||no default|yes|
-|caddy_image|| juharov/caddy-duckdns-cloudflare|no|
+|vault_ZIP_PASSWORD|password for backup file|no default|yes|
+|caddy_image|caddy with duckdns support| juharov/caddy-duckdns-cloudflare|no|
 |vault_vw_caddy_domain4||no default|yes|
 |vault_vw_duckdns_token||no default|yes|
 
