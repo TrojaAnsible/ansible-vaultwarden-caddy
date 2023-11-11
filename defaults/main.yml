@@ -18,7 +18,6 @@ vault_mail_from_vaultwarden:
 vault_vw_admin_token:
 vault_vw_duckdns_token:
 vault_ZIP_PASSWORD:
-vault_vw_caddy_domain4:
 
 
 vw_data_folder: data
@@ -39,7 +38,7 @@ docker_dirs:
 
 
 # vaultwarden
-vw_image: vaultwarden/server:1.29.2
+vw_image: "vaultwarden/server:{{ TAG_ID }}"
 caddy_image: juharov/caddy-duckdns-cloudflare:latest
 vw_backup_image: ttionya/vaultwarden-backup:latest
 

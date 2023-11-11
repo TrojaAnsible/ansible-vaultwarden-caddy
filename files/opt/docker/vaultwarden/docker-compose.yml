@@ -13,7 +13,7 @@ services:
       caddy.reverse_proxy: "vaultwarden:8001"
     environment:
       ROCKET_PORT: 8001
-      WEBSOCKET_ENABLED: true
+      WEBSOCKET_ENABLED: false
       SIGNUPS_ALLOWED: true
       INVITATIONS_ALLOWED: false
       ADMIN_TOKEN: ${ADMIN_TOKEN}

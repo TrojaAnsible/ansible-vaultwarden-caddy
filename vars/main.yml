@@ -11,6 +11,5 @@ mail_from_vaultwarden: "{{ vault_mail_from_vaultwarden }}"
 vw_admin_token: "{{ vault_vw_admin_token }}"
 vw_duckdns_token: "{{ vault_vw_duckdns_token }}"
 # vw_caddy_domain ... see in host_vars
-vw_caddy_domain: "{{ vault_vw_caddy_domain4 }}"
 vwbk_zip_pwassword: "{{ vault_ZIP_PASSWORD }}"
 #

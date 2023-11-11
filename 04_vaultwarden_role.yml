@@ -4,6 +4,7 @@
   become: yes
 
   vars:
+    TAG_ID: 1.30.0
     configure_vaultwarden: true
 
 
